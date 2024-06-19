@@ -1,0 +1,309 @@
+/* Establecimiento de variables globales en :root para mantener un diseño coherente */
+:root {
+    --fuenteHeading: "PT Sans", sans-serif;  /* Define la fuente para los encabezados */
+    --fuenteParrafo: "Open Sans", sans-serif;  /* Define la fuente para el texto del cuerpo */
+    --primario: #784d3c;  /* Color primario para elementos destacados */
+    --gris: #e1e1e1;
+    --blanco: #ffffff;  /* Color blanco para uso general en texto o fondos */
+    --negro: #000000;  /* Color negro para uso general en texto o fondos */
+}
+
+/* Configuración base para todos los elementos HTML */
+html {
+    box-sizing: border-box;  /* Cambia el modelo de caja para incluir padding y border en el ancho y alto total */
+    font-size: 62.5%;  /* Establece el tamaño de fuente base a 10px (62.5% de 16px), facilitando el cálculo de rem */
+}
+*, *:before, *:after {
+    box-sizing: inherit; /* Hace que todos los elementos hereden la propiedad box-sizing del elemento html */
+}
+
+/* Estilos base para el body */
+body {
+    font-family: var(--fuenteParrafo);  /* Aplica la fuente de párrafo a todo el contenido del cuerpo */
+    font-size: 1.6rem;  /* Establece el tamaño de fuente a 16px (1.6rem) */
+    line-height: 2;  /* Aumenta la altura de línea para mejorar la legibilidad del texto */
+}
+
+/* Clases de utilidad para el manejo del contenedor y estilos globales */
+.contenedor {
+    /* max-width: 120rem;  Limita el ancho máximo del contenedor a 120rem 
+    width: 90%;  Establece el ancho del contenedor al 90% de su contenedor padre */
+    /* alternativa */
+    /* Al usar min(90%, 120rem), estás efectivamente limitando el ancho máximo del elemento para grandes pantallas (120 rem), mientras permites que el elemento se ajuste dinámicamente y ocupe el 90% del espacio disponible en pantallas más pequeñas, hasta que 120 rem sea el valor menor. */
+    width: min(90%, 120rem); 
+    margin: 0 auto;  /* Centra el contenedor horizontalmente */
+}
+
+/* Estilos específicos para los encabezados, utilizando la fuente de encabezado definida */
+h1, h2, h3, h4 {
+    font-family: var(--fuenteHeading);  /* Aplica la fuente de encabezado */
+    line-height: 1.2;
+}
+
+/* Establecimiento de tamaños específicos para cada nivel de encabezado */
+h1 { font-size: 4.8rem; }
+h2 { font-size: 4rem; }
+h3 { font-size: 3.2rem; }
+h4 { font-size: 2.4rem; }
+
+/* Asegura que las imágenes sean responsivas */
+img {
+    max-width: 100%;  /* Las imágenes nunca sobrepasarán el ancho de su contenedor */
+}
+
+/* Estilos para enlaces */
+a {
+    text-decoration: none;  /* Elimina el subrayado de los enlaces */
+}
+
+/* Clases de utilidad para manejo de márgenes y padding */
+.no--margin { margin: 0; }
+.no--padding { padding: 0; }
+.centrar--texto { text-align: center; }
+
+/* Estilos para el header, incluyendo una imagen de fondo */
+
+/* Si soporta este formato de imagen se ejecutara lo siguiente */
+.webp .header{
+    background-image: url("../img/banner.webp");
+
+}
+/* En caso de no soportar el formato de imagen anterioir se ejecutara lo siguiente*/
+.no-webp .header {
+    background-image: url("../img/banner.jpg");
+}
+
+.header {
+    background-image: url("../img/banner.jpg");
+    height: 60rem;  /* Establece una altura fija */
+    background-size: cover;  /* Asegura que la imagen cubra completamente el espacio del header */
+    background-repeat: no-repeat;
+    background-position: center center;  /* Centra la imagen de fondo */
+}
+
+/* Estilos para el texto dentro del header */
+.header__texto {
+    text-align: center;  /* Centra el texto */
+    color: var(--blanco);  /* Utiliza el color blanco para el texto */
+    margin-top: 5rem;  /* Espacio en la parte superior dentro del header */
+}
+@media (min-width: 768px) {
+    .header__texto {
+        margin-top: 15rem;  /* Aumenta el margen superior en pantallas más grandes */
+    }
+}
+
+/* Estilos para la barra de navegación en pantallas más grandes */
+@media (min-width: 768px) {
+    .barra {
+        display: flex;
+        justify-content: space-between;  /* Distribuye el espacio uniformemente entre los elementos */
+        align-items: center;  /* Alinea los elementos verticalmente */
+        padding-top: 4rem;
+    }
+}
+
+/* Estilos para la navegación y el logo */
+.logo {
+    color: var(--blanco);  /* Color blanco para el texto del logo */
+}
+
+.logo__nombre { font-weight: 400; }
+.logo__bold { font-weight: 700; }
+
+/* Estilos adicionales para la navegación en pantallas más grandes */
+@media (min-width: 768px) {
+    .navegacion {
+        display: flex;
+        gap: 2rem;  /* Espacio entre los elementos de navegación */
+    }
+}
+
+/* Estilos para los enlaces de navegación */
+.navegacion__enlace {
+    display: block;  /* Los enlaces se muestran como bloques */
+    text-align: center;  /* Centra el texto dentro del enlace */
+    font-size: 1.8rem;  /* Tamaño de fuente para los enlaces */
+    color: var(--blanco);  /* Color blanco para el texto */
+}
+
+/* Contenido Principal del Blog */
+@media (min-width: 768px) {
+    /* Esta consulta de medios se activa cuando el ancho de la ventana es al menos 768px. */
+    .contenido-principal {
+        display: grid; /* Establece el modelo de caja a Grid, permitiendo una disposición más avanzada y flexible de los elementos internos. */
+        grid-template-columns: 2fr 1fr; /* Divide el espacio del contenedor en dos columnas, donde la primera columna es dos veces más ancha que la segunda. */
+        column-gap: 4rem; /* Establece un espacio de 4 rem entre las columnas, proporcionando una separación adecuada para mejorar la legibilidad y el diseño. */
+    }
+}
+
+/* Estilos para entradas generales, como posts o listados */
+.entrada {
+    border-bottom: 3px solid var(--gris); /* Añade un borde inferior gris para delimitar visualmente cada entrada */
+    margin-bottom: 2rem; /* Proporciona un espacio debajo de cada entrada para separarlas entre sí */
+}
+.entrada:last-of-type {
+    border: none; /* Elimina el borde inferior para la última entrada, evitando un borde innecesario */
+    margin-bottom: 0; /* Elimina el margen inferior para la última entrada para un acabado limpio */
+}
+
+/* Estilos básicos para botones */
+.boton {
+    display: block; /* Asegura que el botón se muestre como un bloque, ocupando todo el ancho posible del contenedor */
+    font-family: var(--fuenteHeading); /* Aplica la fuente definida para los encabezados */
+    color: var(--blanco); /* Establece el color del texto a blanco */
+    text-align: center; /* Centra el texto dentro del botón */
+    padding: 1.3rem 3rem; /* Define un relleno generoso para hacer el botón más táctil */
+    font-size: 1.8rem; /* Establece el tamaño del texto dentro del botón */
+    text-transform: uppercase; /* Transforma todo el texto a mayúsculas para un impacto visual más fuerte */
+    margin-bottom: 2rem; /* Añade un margen inferior para separar el botón de otros elementos */
+    border: none;
+}
+@media (min-width: 768px) {
+    .boton {
+        display: inline-block; /* Cambia el botón para que se muestre en línea, permitiendo que se alinee con otros elementos si es necesario */
+    }
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+/* Estilos para variantes de botones */
+.boton--primario {
+    background-color: var(--negro); /* Establece un fondo negro para botones primarios, típicamente botones de acción principal */
+}
+.boton--secundario {
+    background-color: var(--primario); /* Utiliza el color primario definido para botones secundarios */
+}
+
+/* Estilos para una lista de cursos */
+.cursos {
+    list-style: none; /* Elimina los marcadores de lista para un diseño más limpio y moderno */
+}
+
+/* Estilos para widgets individuales de cursos */
+.widget-curso {
+    border-bottom: 3px solid var(--gris); /* Similar a .entrada, delimita cada widget de curso con un borde inferior */
+    margin-bottom: 2rem; /* Espacio debajo de cada widget para separación */
+}
+.widget-curso:last-of-type {
+    border: none; /* Elimina el borde para el último widget de curso */
+    margin-bottom: 0; /* No deja espacio adicional debajo del último widget */
+}
+.widget-curso__label {
+    font-family: var(--fuenteHeading); /* Usa la fuente de los encabezados para etiquetas de cursos */
+    font-weight: bold; /* Hace que el texto de la etiqueta sea negrita para destacar */
+}
+.widget-curso__info {
+    font-weight: normal; /* Mantiene el peso normal para la información del curso para no sobrecargar visualmente */
+}
+.widget-curso__label,
+.widget-curso__info {
+    font-size: 2rem; /* Establece un tamaño de fuente uniforme para las etiquetas e información de los cursos */
+}
+
+/* Estilos para el footer */
+.footer {
+    background-color: var(--negro); /* Aplica un fondo negro para el pie de página */
+    padding-bottom: 3rem; /* Añade un relleno en la parte inferior para un espacio visual */
+    margin-top: 4rem; /* Deja un espacio significativo antes del inicio del pie de página para separarlo del contenido anterior */
+}
+
+/* Sobre Nosotros */
+@media (min-width: 768px) {
+    /* Aplica los siguientes estilos solo cuando el ancho de la ventana del navegador es al menos 768px. */
+    .sobre-nosotros {
+        display: grid; /* Activa el diseño de cuadrícula (Grid) para el contenedor .sobre-nosotros. */
+        grid-template-columns: repeat(2, 1fr); /* Define dos columnas de igual tamaño usando la unidad fraccional (fr), que distribuye el espacio disponible por igual entre las dos columnas. */
+        column-gap: 2rem; /* Establece un espacio de 2 rem entre las columnas, proporcionando una separación adecuada para mejorar la legibilidad y el diseño. */
+    }
+}
+
+/* Cursos */
+.curso {
+    padding: 3rem 0; /* Añade un relleno vertical de 3rem en la parte superior e inferior para separar visualmente los cursos entre sí */
+    border-bottom: 3px solid var(--gris); /* Establece un borde inferior sólido de 3px en un color gris, definido por la variable --gris, para delimitar cada curso */
+}
+
+/* Estilos responsivos para pantallas con un mínimo de 768px de ancho */
+@media (min-width: 768px) {
+    .curso {
+        display: grid; /* Cambia el diseño del contenedor .curso a una cuadrícula */
+        grid-template-columns: 1fr 2fr; /* Crea dos columnas, donde la segunda columna es dos veces más ancha que la primera */
+        column-gap: 2rem; /* Establece un espacio de 2 rem entre las columnas para asegurar que el contenido no se mezcle */
+        text-align: justify; /* Justifica el texto dentro de .curso, asegurando que ambos lados del texto estén alineados con los bordes del contenedor */
+    }
+}
+
+.curso:last-of-type {
+    border: none;
+}
+
+.curso__label {
+    font-family: var(--fuenteHeading); /* Usa la fuente de los encabezados para etiquetas de cursos */
+    font-weight: bold; /* Hace que el texto de la etiqueta sea negrita para destacar */
+}
+.curso__info {
+    font-weight: normal; /* Mantiene el peso normal para la información del curso para no sobrecargar visualmente */
+}
+.curso__label,
+.curso__info {
+    font-size: 2rem; /* Establece un tamaño de fuente uniforme para las etiquetas e información de los cursos */
+}
+
+/* Contacto */
+.error {
+    background-color: red;
+    text-align: center;
+    padding: 1rem;
+    color: var(--blanco);
+    text-transform: uppercase;
+}
+.correcto {
+    background-color: green;
+    text-align: center;
+    padding: 1rem;
+    color: var(--blanco);
+    text-transform: uppercase;
+}
+
+.contacto-bg {
+    background-image: url(../img/contacto.jpg); /* Establece una imagen de fondo, ubicada en el directorio de imágenes un nivel arriba del CSS */
+    height: 40rem; /* Define una altura fija para el elemento de 40 rem para asegurarse de que la imagen tenga suficiente espacio vertical para mostrarse */
+    background-size: cover; /* Ajusta la imagen de fondo para cubrir completamente el espacio del elemento, sin importar sus dimensiones */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita. Esto es importante cuando no quieres que la imagen se tile o repita a lo largo del contenedor */
+}
+
+/* Formulario */
+/* Estilos para el formulario */
+.formulario {
+    background-color: var(--blanco); /* Establece el fondo del formulario en blanco utilizando una variable CSS */
+    margin: -5rem auto 0 auto; /* Controla el margen del formulario, con un margen superior negativo para superponerlo ligeramente sobre el contenido anterior */
+    width: 95%; /* Establece el ancho del formulario al 95% del contenedor padre */
+    padding: 5rem; /* Agrega un relleno interior de 5 rem alrededor del contenido del formulario */
+}
+
+/* Estilos para los campos del formulario */
+.campo {
+    display: flex; /* Establece un diseño flexible para los campos del formulario */
+    margin-bottom: 2rem; /* Agrega un margen inferior de 2 rem para separar visualmente los campos */
+}
+
+/* Estilos para la etiqueta de los campos del formulario */
+.campo__label {
+    flex: 0 0 9rem; /* Establece un tamaño flexible para la etiqueta del campo, fijándola en 9 rem de ancho */
+    text-align: right; /* Alinea el texto de la etiqueta a la derecha */
+    padding-right: 2rem; /* Agrega un relleno derecho de 2 rem para separar la etiqueta del campo */
+}
+
+/* Estilos para los campos de entrada del formulario */
+.campo__field {
+    flex: 1; /* Establece que el campo de entrada del formulario ocupe todo el espacio disponible */
+    border: 3px solid var(--gris); /* Agrega un borde sólido de 3 px en un color gris, definido por una variable CSS */
+}
+
+/* Estilos específicos para el campo de texto del formulario */
+.campo__field--textarea {
+    height: 20rem; /* Establece una altura fija de 20 rem para el campo de texto, ideal para áreas de texto extensas */
+}
